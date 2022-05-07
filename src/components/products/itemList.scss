@@ -1,0 +1,52 @@
+@import '../../styles/abstract/variables';
+.item-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100vw;
+  padding-bottom: 28px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.list-container {
+  position: relative;
+}
+.scroll-dots {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 17px;
+  width: 100vw;
+  background-color: $color-white;
+
+  &.first {
+    & p:first-child {
+      color: $color-secondary;
+    }
+  }
+  &.second {
+    & p:nth-child(2) {
+      color: $color-secondary;
+    }
+  }
+  &.third {
+    & p:nth-child(3) {
+      color: $color-secondary;
+    }
+  }
+  &.fourth {
+    & p:last-child {
+      color: $color-secondary;
+    }
+  }
+  p {
+    margin: 0 5px;
+    transition: all 0.5s;
+    color: $color-grey-light-4;
+  }
+}

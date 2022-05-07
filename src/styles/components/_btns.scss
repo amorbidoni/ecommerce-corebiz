@@ -1,0 +1,31 @@
+@import '../abstract/variables';
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    transform: translateY(0);
+  }
+  &__primary-m {
+    width: 172px;
+    height: 44px;
+    background-color: $color-black;
+    color: $color-white;
+    font-family: $font-ubuntu;
+    font-weight: $font-medium;
+    font-size: 15.3px;
+  }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 15px rgba($color-black, 0.2);
+  }
+  &:active {
+    transform: translateY(2px);
+    background-color: rgb(53, 53, 53);
+  }
+}
