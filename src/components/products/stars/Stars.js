@@ -1,13 +1,7 @@
 import React from 'react';
-import img from '../../../assets/images';
-import './stars.scss';
 
+import './stars.scss';
 import Rating from 'react-rating';
-const SVGIcon = (props) => (
-  <svg className={props.className} pointerEvents="none">
-    <use xlinkHref={props.href} />
-  </svg>
-);
 
 export const Stars = ({ raiting }) => {
   return (

@@ -1,11 +1,15 @@
 import './App.scss';
-import { Index } from './components/Index';
+import { CartProvider } from './components/context/CartProvider';
+
+import { AppRouter } from './routes/routes';
 
 function App() {
   return (
-    <div className="App">
-      <Index />
-    </div>
+    <main className="main">
+      <CartProvider>
+        <AppRouter />
+      </CartProvider>
+    </main>
   );
 }
 

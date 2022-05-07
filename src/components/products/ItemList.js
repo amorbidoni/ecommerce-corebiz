@@ -22,7 +22,7 @@ export const ItemList = ({ products }) => {
     <div className="list-container">
       <div className="item-list" onScroll={handleScroll}>
         {products.map((p) => (
-          <Item product={p} key={p.id} />
+          <Item product={p} key={p.productId} />
         ))}
       </div>
       <div className={`scroll-dots ${scrollDot}`}>

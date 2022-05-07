@@ -1,0 +1,106 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+  &__button {
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 9px;
+    left: 18px;
+    z-index: 2000;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.8s cubic-bezier(0.83, 0, 0.17, 1);
+    border-radius: 50%;
+  }
+  &__background {
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top: 13px;
+    left: 22px;
+    background-color: black;
+    z-index: 1000;
+    transition: all 0.8s cubic-bezier(0.83, 0, 0.17, 1);
+  }
+  &__nav {
+    z-index: -1;
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  //   functionality
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+  &__checkbox:checked ~ &__nav {
+    z-index: 1500;
+    opacity: 1;
+    width: 100%;
+  }
+
+  //icon
+  &__icon {
+    position: relative;
+    margin-top: 2.5rem;
+    &,
+    &:after,
+    &::before {
+      width: 3rem;
+      height: 3.5px;
+      background-color: black;
+      display: inline-block;
+    }
+    &:after,
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+    &:before {
+      top: -0.8rem;
+      transform-origin: center;
+    }
+    &:after {
+      top: 0.8rem;
+      transform-origin: center;
+    }
+  }
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+  &__checkbox:checked + &__button {
+    background-color: transparent;
+  }
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+    &:before {
+      top: 0;
+      transform: rotate(135deg);
+      height: 2px;
+      background-color: grey;
+    }
+    &:after {
+      top: 0;
+      height: 2px;
+      background-color: grey;
+      transform: rotate(-135deg);
+    }
+  }
+}

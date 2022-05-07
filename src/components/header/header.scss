@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 105px;
+  padding: 10px 31px 0 27px;
+  &__navBar {
+  }
+  &__logo {
+    img {
+      width: 145px;
+    }
+  }
+  &__searchBar {
+    width: 100%;
+    height: 40px;
+    background-color: red;
+  }
+  &__client {
+  }
+  &__cart {
+  }
+}
