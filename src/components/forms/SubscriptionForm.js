@@ -1,58 +1,76 @@
 import React, { useState } from 'react';
 import validator from 'validator';
+import { useApi } from '../../hooks/useApi';
+import { useForm } from '../../hooks/useForm';
 import './subscriptionForm.scss';
 
 export const SubscriptionForm = () => {
-  const [form, setForm] = useState({
-    user: {
-      name: '',
-      email: '',
-    },
+  //
+  // API
+  //
+  const { newsLetterSubscription } = useApi();
+  //
+  //FORM
+  //
+  const [form, handleInputChange] = useForm({
+    name: '',
+    email: '',
   });
-  const handleChange = (e) => {
-    setForm({
-      user: {
-        ...form.user,
-        [e.target.name]: e.target.value,
-      },
-    });
-    if (e.target.name === 'email' && emailError.error) {
-      validateEmail(e.target.value);
-    }
+  const { name, email } = form;
+  // const [form, setForm] = useState({});
+  // const handleChange = (e) => {
+  //   if (e.target.name === 'email' && emailError.error) {
+  //     validateEmail(e.target.value);
+  //   }
 
-    validRequired(e.target.validity.valid, e.target.name);
-  };
+  //   validRequired(e.target.validity.valid, e.target.name);
+  // };
+  //
+  // SUBMIT
+  //
   const handleSubmit = (e) => {
     e.preventDefault();
-    validateEmail(form.user.email);
+    // validateEmail(form.user.email);
+    validName();
+    if (validator.isEmpty(name)) {
+      setNameError({ msg: '*campo obligatorio', error: true });
+      return;
+    }
+    if (validator.isEmpty(email)) {
+      setEmailError({ msg: '*campo obligatorio', error: true });
+      return;
+    }
+    if (!validator.isEmail(email)) {
+      setEmailError({ msg: '*email incorrecto', error: true });
+      return;
+    }
+    console.log(form);
   };
 
-  // validators
-
+  //
+  // HANDLE ERRORS
+  //
   const [emailError, setEmailError] = useState({ msg: '', error: false });
   const [nameError, setNameError] = useState({ msg: '', error: false });
   const validateEmail = (email) => {
-    if (!validator.isEmail(email)) {
-      setEmailError({ msg: '*email incorrecto', error: true });
-    } else {
-      setEmailError({ msg: '', error: false });
-    }
+    return validator.isEmail(email);
   };
-  const validRequired = (valid, input) => {
-    if (input === 'email') {
-      if (!valid) {
-        setEmailError({ msg: '*campo obligatorio', error: true });
-      } else {
-        setEmailError({ msg: '', error: false });
-      }
-    } else if (input === 'name') {
-      if (!valid) {
-        setNameError({ msg: '*campo obligatorio', error: true });
-      } else {
-        setNameError({ msg: '', error: false });
-      }
-    }
-  };
+  const validName = () => {};
+  // const validRequired = (valid, input) => {
+  //   if (input === 'email') {
+  //     if (!valid) {
+  //       setEmailError({ msg: '*campo obligatorio', error: true });
+  //     } else {
+  //       setEmailError({ msg: '', error: false });
+  //     }
+  //   } else if (input === 'name') {
+  //     if (!valid) {
+  //       setNameError({ msg: '*campo obligatorio', error: true });
+  //     } else {
+  //       setNameError({ msg: '', error: false });
+  //     }
+  //   }
+  // };
   return (
     <section className="subscribe">
       <div className="subscribe__title">
@@ -64,8 +82,8 @@ export const SubscriptionForm = () => {
             className="form__item--input"
             placeholder="Ingresa tu nombre"
             type="text"
-            onChange={handleChange}
-            value={form.user.name}
+            onChange={handleInputChange}
+            value={name}
             name="name"
             required
           />
@@ -76,19 +94,15 @@ export const SubscriptionForm = () => {
             className="form__item--input"
             placeholder="Ingresa tu mail"
             type="mail"
-            value={form.user.email}
-            onChange={handleChange}
+            value={email}
+            onChange={handleInputChange}
             name="email"
             required
           />
           <span className="form__item--alert">{emailError.msg}</span>
         </div>
         <div className="subscribe__btns">
-          <button
-            onClick={handleSubmit}
-            className="myBtn myBtn__primary-xl"
-            disabled={!form.user.name || !form.user.email}
-          >
+          <button onClick={handleSubmit} className="myBtn myBtn__primary-xl">
             Suscribirme
           </button>
         </div>

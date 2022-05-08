@@ -1,5 +1,4 @@
 import React, { useContext, useState, createContext } from 'react';
-import { useCounter } from '../../hooks/useCounter';
 
 // creo un context
 export const CartContext = createContext();
@@ -14,23 +13,36 @@ export const CartProvider = ({ children }) => {
   const [itemsInCart, setItemsInCart] = useState([]);
   // agregar producos
 
-  const { counter, increment } = useCounter();
-  const addItem = (item, qty) => {
-    increment();
-    setItemsInCart([...itemsInCart, { ...item, qty }]);
+  const addItem = (product) => {
+    let isInCart = itemsInCart.find(
+      (item) => item.productId === product.productId
+    );
+
+    isInCart
+      ? setItemsInCart(
+          itemsInCart.map((item) =>
+            item.productId === product.productId
+              ? { ...isInCart, qty: isInCart.qty + 1 }
+              : item
+          )
+        )
+      : setItemsInCart([...itemsInCart, { ...product, qty: 1 }]);
   };
   // sumar cantidades
-  // sumar cantidades
+
   const getQuantityItemsInCart = () => {
-    return counter;
+    const totalItemsInCart = itemsInCart
+      .map((e) => e.qty)
+      .reduce((prev, curr) => prev + curr, 0);
+    return totalItemsInCart;
   };
 
   // declaro a carritociontext como proveedeor con provider
   return (
     <CartContext.Provider
       value={{
+        itemsInCart,
         addItem,
-
         getQuantityItemsInCart,
       }}
     >

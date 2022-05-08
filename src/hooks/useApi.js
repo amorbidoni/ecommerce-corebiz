@@ -7,10 +7,11 @@ export const useApi = () => {
   const baseUrl = `https://corebiz-test.herokuapp.com`;
 
   const getItems = async () => {
-    const _url = `${baseUrl}/api/v1/products`;
     try {
+      const _url = `/api/v1/products`;
       const response = await axios({
         method: 'get',
+        baseURL: baseUrl,
         url: _url,
       });
 
@@ -18,6 +19,25 @@ export const useApi = () => {
       setLoading(false);
     } catch (error) {
       throw new Error(`Error en la peticion getItems: ${error}`);
+    }
+  };
+
+  const newsLetterSubscription = async (body) => {
+    try {
+      const _url = `/api/v1/newsletter`;
+      const response = await axios(
+        {
+          method: 'post',
+          baseURL: baseUrl,
+          url: _url,
+        },
+        {
+          body,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      throw new Error(`Error en la peticion newsLetterSubscription: ${error}`);
     }
   };
 

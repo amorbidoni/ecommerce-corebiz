@@ -2,18 +2,18 @@ import React, { memo } from 'react';
 import { Stars } from './stars/Stars';
 import './item.scss';
 
-import { useCounter } from '../../hooks/useCounter';
 import { useCartContext } from '../context/CartProvider';
+
 export const Item = memo(({ product }) => {
   const getPriceWithDecimals = (price) => {
     const myNumber = price / 100;
     return parseFloat(myNumber).toFixed(2);
   };
+
   const { addItem } = useCartContext();
-  const { counter, increment } = useCounter(1);
+
   const onAdd = (product) => {
-    increment();
-    addItem(product, counter);
+    addItem(product);
   };
 
   return (
