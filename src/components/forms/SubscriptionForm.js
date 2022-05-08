@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import validator from 'validator';
+import { Loader } from '../loader/Loader';
 import { useApi } from '../../hooks/useApi';
 import { useForm } from '../../hooks/useForm';
 import './subscriptionForm.scss';
@@ -8,30 +9,25 @@ export const SubscriptionForm = () => {
   //
   // API
   //
-  const { newsLetterSubscription } = useApi();
+  const { newsLetterSubscription, loading, setLoading } = useApi();
   //
   //FORM
   //
-  const [form, handleInputChange] = useForm({
+  const [form, handleInputChange, reset] = useForm({
     name: '',
     email: '',
   });
   const { name, email } = form;
-  // const [form, setForm] = useState({});
-  // const handleChange = (e) => {
-  //   if (e.target.name === 'email' && emailError.error) {
-  //     validateEmail(e.target.value);
-  //   }
+  useEffect(() => {
+    setNameError({ msg: '', error: false });
+    setEmailError({ msg: '', error: false });
+  }, [form]);
 
-  //   validRequired(e.target.validity.valid, e.target.name);
-  // };
   //
   // SUBMIT
   //
   const handleSubmit = (e) => {
     e.preventDefault();
-    // validateEmail(form.user.email);
-    validName();
     if (validator.isEmpty(name)) {
       setNameError({ msg: '*campo obligatorio', error: true });
       return;
@@ -44,7 +40,9 @@ export const SubscriptionForm = () => {
       setEmailError({ msg: '*email incorrecto', error: true });
       return;
     }
-    console.log(form);
+    setLoading(true);
+    newsLetterSubscription(form);
+    reset();
   };
 
   //
@@ -52,31 +50,24 @@ export const SubscriptionForm = () => {
   //
   const [emailError, setEmailError] = useState({ msg: '', error: false });
   const [nameError, setNameError] = useState({ msg: '', error: false });
-  const validateEmail = (email) => {
-    return validator.isEmail(email);
-  };
-  const validName = () => {};
-  // const validRequired = (valid, input) => {
-  //   if (input === 'email') {
-  //     if (!valid) {
-  //       setEmailError({ msg: '*campo obligatorio', error: true });
-  //     } else {
-  //       setEmailError({ msg: '', error: false });
-  //     }
-  //   } else if (input === 'name') {
-  //     if (!valid) {
-  //       setNameError({ msg: '*campo obligatorio', error: true });
-  //     } else {
-  //       setNameError({ msg: '', error: false });
-  //     }
-  //   }
-  // };
+
   return (
     <section className="subscribe">
-      <div className="subscribe__title">
+      {loading && (
+        <div className="subscribe__loader">
+          <Loader />
+        </div>
+      )}
+      <div
+        className={!loading ? 'subscribe__title' : 'subscribe__title filter'}
+      >
         <h2>¡Únete a nuestras novedades y promociones!</h2>
       </div>
-      <form className="form subscribe__form">
+      <form
+        className={
+          !loading ? 'form subscribe__form' : 'form subscribe__form filter'
+        }
+      >
         <div className="form__item">
           <input
             className="form__item--input"

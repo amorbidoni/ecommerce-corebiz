@@ -25,21 +25,24 @@ export const useApi = () => {
   const newsLetterSubscription = async (body) => {
     try {
       const _url = `/api/v1/newsletter`;
-      const response = await axios(
-        {
-          method: 'post',
-          baseURL: baseUrl,
-          url: _url,
-        },
-        {
-          body,
-        }
-      );
-      console.log(response);
+      const response = await axios({
+        method: 'post',
+        baseURL: baseUrl,
+        url: _url,
+        data: body,
+      });
+      setLoading(false);
     } catch (error) {
       throw new Error(`Error en la peticion newsLetterSubscription: ${error}`);
     }
   };
 
-  return { products, loading, setLoading, getItems, setProducts };
+  return {
+    products,
+    loading,
+    setLoading,
+    getItems,
+    setProducts,
+    newsLetterSubscription,
+  };
 };
