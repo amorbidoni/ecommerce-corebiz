@@ -1,10 +1,53 @@
 // fuentes
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Ubuntu:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+//
 $font-nunito: 'Nunito', sans-serif;
 $font-ubuntu: 'Ubuntu', sans-serif;
+$font-lato: 'Lato', sans-serif;
+
 $font-regular: 400;
 $font-medium: 500;
 $font-semi-bold: 600;
 $font-bold: 700;
 $font-black: 900;
+
+.title-primary {
+  font-family: $font-nunito;
+  position: relative;
+
+  &--black {
+    padding-bottom: 11px;
+    font-weight: $font-black;
+    color: $color-black;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 38px;
+      height: 4px;
+      background-color: $color-grey-light-4;
+    }
+  }
+  &.fz-m {
+    font-size: 1.8rem;
+  }
+  &.fz-l {
+    font-size: 2.2rem;
+  }
+  &--white {
+    font-weight: $font-bold;
+    color: $color-white;
+    padding-bottom: 16.5px;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 42px;
+      height: 4px;
+      background-color: $color-white;
+    }
+  }
+}

@@ -8,7 +8,7 @@ export const CartWidgetApp = ({ counter }) => {
 
   return (
     <>
-      <Link to={'/carrito'}>
+      <Link to={'/carrito-de-compras'}>
         <div className="cart">
           {getQuantityItemsInCart() !== 0 ? (
             <div id="cart-counter" className="cart__counter">

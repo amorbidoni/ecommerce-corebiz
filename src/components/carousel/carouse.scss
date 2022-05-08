@@ -1,0 +1,36 @@
+@import '../../styles/abstract/variables';
+@import '../../styles/base/tipografy';
+.carousel-indicators [data-bs-target] {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50%;
+
+  &.active {
+    background-color: $color-secondary !important;
+  }
+}
+.carousel-item {
+  height: 255px !important;
+  overflow-y: hidden;
+  img {
+    filter: brightness(85%);
+  }
+}
+.carousel-caption {
+  width: 350px;
+  right: 0%;
+  left: 26px !important;
+  text-align: left !important;
+  h3 {
+    font-family: $font-nunito;
+    font-weight: $font-bold;
+    font-size: 2.4rem;
+  }
+  p {
+    font-family: $font-nunito;
+    font-weight: $font-black;
+    font-size: 3.2rem;
+    margin-bottom: 40px;
+    line-height: 4rem;
+  }
+}

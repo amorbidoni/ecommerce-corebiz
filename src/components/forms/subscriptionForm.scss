@@ -1,0 +1,23 @@
+@import '../../styles/abstract/variables';
+@import '../../styles/base/tipografy';
+.subscribe {
+  width: 100vw;
+  height: 321px;
+  margin-top: 24px;
+  background-color: $color-grey-light-1;
+  padding: 12px 27px 20px;
+  &__title {
+    h2 {
+      font-family: $font-lato;
+      font-weight: $font-bold;
+      font-size: 2.7rem;
+      line-height: 3.5rem;
+    }
+  }
+  &__form {
+    margin-top: 14px;
+  }
+  &__btns {
+    margin-top: 8px;
+  }
+}

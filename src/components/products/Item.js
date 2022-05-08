@@ -20,9 +20,11 @@ export const Item = memo(({ product }) => {
     <div className="product">
       <div className="product__image">
         <img src={product.imageUrl} alt={product.productName} />
-        <div className="product__off">
-          <p>OFF</p>
-        </div>
+        {product.listPrice && (
+          <div className="product__off">
+            <p>OFF</p>
+          </div>
+        )}
       </div>
       <div className="product__data">
         <p className="product__data--title">{product.productName}</p>
@@ -52,7 +54,7 @@ export const Item = memo(({ product }) => {
             onClick={() => {
               onAdd(product);
             }}
-            className="btn btn__primary-m"
+            className="myBtn myBtn__primary-m"
           >
             Comprar
           </button>

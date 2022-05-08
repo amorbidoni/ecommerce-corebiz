@@ -20,6 +20,11 @@ export const ItemList = ({ products }) => {
   };
   return (
     <div className="list-container">
+      <div className="list-container__title">
+        <h2 className="title-primary title-primary--black fz-m">
+          Más Vendidos
+        </h2>
+      </div>
       <div className="item-list" onScroll={handleScroll}>
         {products.map((p) => (
           <Item product={p} key={p.productId} />

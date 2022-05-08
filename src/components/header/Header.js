@@ -15,7 +15,14 @@ export const HeaderApp = () => {
       <div className="header__cart">
         <CartWidgetApp />
       </div>
-      <div className="header__searchBar"></div>
+      <div className="header__searchBar">
+        <input
+          className="header__searchBar--input"
+          type="text"
+          placeholder="¿Qué estas buscando?"
+        />
+        <img className="header__searchBar--icon" src={img.searchIcon} />
+      </div>
       <div className="header__client"></div>
     </section>
   );

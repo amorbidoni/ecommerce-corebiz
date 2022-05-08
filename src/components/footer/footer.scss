@@ -1,0 +1,67 @@
+@import '../../styles/abstract/variables';
+@import '../../styles/base/tipografy';
+
+.footer {
+  width: 100vw;
+  height: 520px;
+  background-color: $color-black;
+  padding: 24px 27.5px;
+  &__title {
+    margin-bottom: 34px;
+  }
+  &__info {
+    color: white;
+    font-family: $font-nunito;
+    font-weight: $font-regular;
+    font-size: 1.5rem;
+    p {
+      margin: 13.5px 0;
+    }
+  }
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+  }
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 37px 0 30px;
+    margin-top: 20px;
+    p {
+      color: $color-white;
+      font-size: 1rem;
+      font-family: $font-nunito;
+      font-weight: $font-regular;
+      margin: 0;
+    }
+    &--corebiz {
+      img {
+        width: 100px;
+      }
+      p {
+        margin-left: 6px;
+      }
+    }
+    &--vtex {
+      position: relative;
+
+      img {
+        width: 72px;
+        margin-top: 7px;
+      }
+      &::before {
+        content: '';
+        width: 45px;
+        height: 10px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        background: $color-black;
+      }
+    }
+  }
+}

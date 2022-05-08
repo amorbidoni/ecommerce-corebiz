@@ -1,3 +1,5 @@
+@import '../../styles/abstract/variables';
+@import '../../styles/base/tipografy';
 .header {
   display: flex;
   flex-direction: row;
@@ -6,18 +8,40 @@
   flex-wrap: wrap;
   width: 100vw;
   height: 105px;
-  padding: 10px 31px 0 27px;
+  padding: 10px 31px 10px 27px;
   &__navBar {
   }
   &__logo {
+    margin-left: 35px;
     img {
       width: 145px;
     }
   }
   &__searchBar {
     width: 100%;
-    height: 40px;
-    background-color: red;
+    height: 32px;
+    position: relative;
+    &--input {
+      width: 100%;
+      height: 32px;
+      border: none;
+      border-bottom: 1px solid $color-text-grey-1;
+      padding-top: 5px;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        font-family: $font-nunito;
+        font-size: 1.3rem;
+        color: $color-text-grey-1;
+      }
+    }
+    &--icon {
+      position: absolute;
+      right: 3px;
+      top: 5px;
+      width: 24px;
+    }
   }
   &__client {
   }
