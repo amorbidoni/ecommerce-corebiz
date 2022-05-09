@@ -9,17 +9,31 @@
   padding: 24px 27.5px;
   @include respond(tab-land) {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 213px;
   }
   &__title {
     margin-bottom: 34px;
+    @include respond(tab-land) {
+      margin-bottom: 20px;
+    }
   }
   &__info {
     color: white;
     font-family: $font-nunito;
     font-weight: $font-regular;
     font-size: 1.5rem;
+    @include respond(tab-land) {
+      font-size: 1.3rem;
+    }
     p {
       margin: 13.5px 0;
+      @include respond(tab-land) {
+        margin: 5px 0;
+      }
     }
   }
   &__btns {

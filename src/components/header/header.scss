@@ -65,8 +65,10 @@
   }
   &__client {
     display: none;
+
     @include respond(tab-land) {
       display: block;
+      cursor: pointer;
       order: 3;
     }
   }

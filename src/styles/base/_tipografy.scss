@@ -39,6 +39,9 @@ $font-black: 900;
   }
   &.fz-l {
     font-size: 2.2rem;
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
   }
   &--white {
     font-weight: $font-bold;

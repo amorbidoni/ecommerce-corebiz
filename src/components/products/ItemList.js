@@ -20,10 +20,9 @@ export const ItemList = ({ products }) => {
   };
   const container = document.getElementById('item-list');
 
-  const [scrollInterval, setScrollInterval] = useState(100);
   const scrollRight = () => {
-    container.scrollTo(scrollInterval, 0, 'smooth');
-    setScrollInterval(scrollInterval + 100);
+    let interval = container.scrollWidth;
+    container.scrollTo(interval, 0, 'smooth');
   };
   const scrollLeft = () => {
     container.scrollTo(0, 0, 'smooth');
