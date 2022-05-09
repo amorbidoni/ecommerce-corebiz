@@ -1,4 +1,5 @@
 // fuentes
+@import '../abstract/mixins';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Ubuntu:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 //
@@ -32,6 +33,9 @@ $font-black: 900;
   }
   &.fz-m {
     font-size: 1.8rem;
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
   }
   &.fz-l {
     font-size: 2.2rem;

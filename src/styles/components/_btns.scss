@@ -1,4 +1,5 @@
 @import '../abstract/variables';
+@import '../abstract/mixins';
 .myBtn {
   &,
   &:link,
@@ -20,6 +21,11 @@
     font-family: $font-ubuntu;
     font-weight: $font-medium;
     font-size: 1.53rem;
+    @include respond(tab-land) {
+      width: 125px;
+      height: 32px;
+      font-size: 1.2rem;
+    }
   }
   &__primary-xl {
     width: 100%;
@@ -29,6 +35,11 @@
     font-family: $font-lato;
     font-weight: $font-bold;
     font-size: 1.4rem;
+    @include respond(tab-land) {
+      width: 140px;
+      height: 48px;
+      border-radius: 0;
+    }
   }
   &:hover {
     transform: translateY(-2px);

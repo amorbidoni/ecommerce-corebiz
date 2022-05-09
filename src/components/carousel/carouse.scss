@@ -1,10 +1,14 @@
 @import '../../styles/abstract/variables';
+@import '../../styles/abstract/mixins';
 @import '../../styles/base/tipografy';
+.carousel-slide {
+  width: 100vw;
+}
 .carousel-indicators [data-bs-target] {
   width: 10px !important;
   height: 10px !important;
   border-radius: 50%;
-
+  z-index: 40 !important;
   &.active {
     background-color: $color-secondary !important;
   }
@@ -12,8 +16,23 @@
 .carousel-item {
   height: 255px !important;
   overflow-y: hidden;
-  img {
+  @include respond(tab-port) {
+    height: 330px !important;
+  }
+  @include respond(tab-land) {
+    height: 430px !important;
+  }
+  .carousel-img {
     filter: brightness(85%);
+
+    @include respond(tab-land) {
+      width: 65% !important;
+      transform: translateX(80px);
+    }
+    @include respond(desktop) {
+      transform: translateX(40px);
+      width: 60% !important;
+    }
   }
 }
 .carousel-caption {
@@ -21,6 +40,15 @@
   right: 0%;
   left: 26px !important;
   text-align: left !important;
+  z-index: 30;
+  @include respond(tab-land) {
+    bottom: 50% !important;
+    transform: translateY(50%);
+    left: 6% !important;
+  }
+  @include respond(desktop) {
+    left: 10% !important;
+  }
   h3 {
     font-family: $font-nunito;
     font-weight: $font-bold;
@@ -33,4 +61,23 @@
     margin-bottom: 40px;
     line-height: 4rem;
   }
+}
+
+.background-black {
+  display: none;
+  @include respond(tab-land) {
+    display: block;
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    z-index: 1;
+  }
+}
+.image-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  position: relative;
+  overflow-y: hidden;
 }

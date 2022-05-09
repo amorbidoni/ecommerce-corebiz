@@ -1,4 +1,5 @@
 @import '../../styles/abstract/variables';
+@import '../../styles/abstract/mixins';
 @import '../../styles/base/tipografy';
 .header {
   display: flex;
@@ -9,10 +10,21 @@
   width: 100vw;
   height: 105px;
   padding: 10px 31px 10px 27px;
+  @include respond(tab-land) {
+    justify-content: space-evenly;
+    width: 100%;
+  }
   &__navBar {
+    @include respond(tab-land) {
+      display: none;
+    }
   }
   &__logo {
     margin-left: 35px;
+    @include respond(tab-land) {
+      margin-left: 0;
+      order: 1;
+    }
     img {
       width: 145px;
     }
@@ -21,12 +33,20 @@
     width: 100%;
     height: 32px;
     position: relative;
+    @include respond(tab-land) {
+      width: 40%;
+      background-color: red;
+      order: 2;
+    }
     &--input {
       width: 100%;
       height: 32px;
       border: none;
       border-bottom: 1px solid $color-text-grey-1;
       padding-top: 5px;
+      @include respond(tab-land) {
+        padding-bottom: 10px;
+      }
       &:focus {
         outline: none;
       }
@@ -44,7 +64,34 @@
     }
   }
   &__client {
+    display: none;
+    @include respond(tab-land) {
+      display: block;
+      order: 3;
+    }
   }
   &__cart {
+    @include respond(tab-land) {
+      margin-right: 30px;
+      order: 4;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  img {
+    width: 15px;
+  }
+  p {
+    margin: 2px 0 0 7px;
+    font-family: $font-nunito;
+    font-weight: $font-regular;
+    color: $color-text-grey-1;
+    font-size: 1.3rem;
   }
 }

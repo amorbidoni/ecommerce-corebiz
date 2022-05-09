@@ -1,16 +1,16 @@
 @mixin respond($breackpoint) {
-  @if $breackpoint == phone {
-    @media (max-width: 37.5em) /*600px*/ {
-      @content;
-    }
-  }
   @if $breackpoint == tab-port {
-    @media (max-width: 56.25em) /*900px*/ {
+    @media (min-width: 37.5em) /*600px*/ {
       @content;
     }
   }
   @if $breackpoint == tab-land {
-    @media (max-width: 75em) /*1200px*/ {
+    @media (min-width: 56.25em) /*900px*/ {
+      @content;
+    }
+  }
+  @if $breackpoint == desktop {
+    @media (min-width: 75em) /*1200px*/ {
       @content;
     }
   }

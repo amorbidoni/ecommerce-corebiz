@@ -1,0 +1,14 @@
+@import '../../styles/abstract/mixins';
+.item-list-container {
+  @include respond(tab-land) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+@media all and (min-width: 500px) {
+  .product {
+    width: 316px;
+  }
+}

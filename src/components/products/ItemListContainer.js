@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { Loader } from '../loader/Loader';
 import { ItemList } from './ItemList';
+import './itemListContainer.scss';
 export const ItemListContainer = ({ categories = true }) => {
   let { categoryId } = useParams();
   const { products, loading, setLoading, getItems } = useApi();

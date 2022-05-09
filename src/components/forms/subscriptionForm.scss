@@ -1,4 +1,5 @@
 @import '../../styles/abstract/variables';
+@import '../../styles/abstract/mixins';
 @import '../../styles/base/tipografy';
 .subscribe {
   width: 100vw;
@@ -7,17 +8,28 @@
   background-color: $color-grey-light-1;
   padding: 12px 27px 20px;
   position: relative;
-
+  @include respond(tab-land) {
+    width: 100%;
+    height: 146px;
+  }
   &__title {
     h2 {
       font-family: $font-lato;
       font-weight: $font-bold;
       font-size: 2.7rem;
       line-height: 3.5rem;
+      @include respond(tab-land) {
+        text-align: center;
+      }
     }
   }
   &__form {
     margin-top: 14px;
+    @include respond(tab-land) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
   }
   &__btns {
     margin-top: 8px;

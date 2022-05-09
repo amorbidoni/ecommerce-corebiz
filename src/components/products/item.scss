@@ -1,4 +1,5 @@
 @import '../../styles/styles.scss';
+@import '../../styles/abstract/mixins';
 
 .product {
   display: flex;
@@ -9,6 +10,11 @@
   height: 337px;
   font-family: $font-nunito;
   margin: 10px 20px;
+  @include respond(tab-land) {
+    justify-content: flex-start;
+    height: 353px;
+  }
+
   &:hover {
     background-color: $color-bg-grey;
   }
@@ -26,7 +32,7 @@
       transparent 51%
     );
     color: white;
-    font-size: 10px;
+    font-size: 1rem;
     text-align: right;
     font-weight: $font-semi-bold;
     p {
@@ -36,18 +42,25 @@
   &__image {
     position: relative;
     width: 162px;
-
+    @include respond(tab-land) {
+      width: 216px;
+    }
     img {
       width: 162px;
+      @include respond(tab-land) {
+        width: 216px;
+      }
     }
   }
   &__data {
     width: 100%;
     padding-top: 14px;
-
+    @include respond(tab-land) {
+      padding-top: 4px;
+    }
     &--title {
       margin: 0;
-      font-size: 10px;
+      font-size: 1rem;
       font-weight: $font-semi-bold;
       text-align: center;
       color: $color-text-grey-1;
@@ -56,7 +69,7 @@
       margin-top: 5px;
     }
     &--list-price {
-      font-size: 11px;
+      font-size: 1.1rem;
       font-weight: $font-regular;
       text-align: center;
       color: $color-text-grey-1;
@@ -66,18 +79,31 @@
     }
     &--price {
       font-weight: $font-bold;
-      font-size: 16px;
+      font-size: 1.6rem;
       text-align: center;
       color: $color-black;
       margin: 4px 0;
+      @include respond(tab-land) {
+        font-size: 1.8rem;
+        margin: 0;
+      }
     }
     &--installments {
-      font-size: 11px;
+      font-size: 1.1rem;
       text-align: center;
       font-weight: $font-regular;
       color: $color-text-grey-1;
       height: 15.5px;
       margin: 10px auto;
+      @include respond(tab-land) {
+        margin: 7px auto;
+      }
+    }
+  }
+  &__btn {
+    button {
+      display: block;
+      margin: 0 auto;
     }
   }
 }

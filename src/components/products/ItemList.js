@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import img from '../../assets/images';
 import { Item } from './Item';
 import './itemList.scss';
 export const ItemList = ({ products }) => {
@@ -18,6 +18,16 @@ export const ItemList = ({ products }) => {
       setScrollDot('fourth');
     }
   };
+  const container = document.getElementById('item-list');
+
+  const [scrollInterval, setScrollInterval] = useState(100);
+  const scrollRight = () => {
+    container.scrollTo(scrollInterval, 0, 'smooth');
+    setScrollInterval(scrollInterval + 100);
+  };
+  const scrollLeft = () => {
+    container.scrollTo(0, 0, 'smooth');
+  };
   return (
     <div className="list-container">
       <div className="list-container__title">
@@ -25,10 +35,18 @@ export const ItemList = ({ products }) => {
           Más Vendidos
         </h2>
       </div>
-      <div className="item-list" onScroll={handleScroll}>
-        {products.map((p) => (
-          <Item product={p} key={p.productId} />
-        ))}
+      <div className="row">
+        <div className="arrow arrow-left" onClick={scrollLeft}>
+          <img src={img.angleLeft} alt="left" />
+        </div>
+        <div id="item-list" className="item-list" onScroll={handleScroll}>
+          {products.map((p) => (
+            <Item product={p} key={p.productId} />
+          ))}
+        </div>
+        <div className="arrow arrow-right">
+          <img src={img.angleRight} alt="right" onClick={scrollRight} />
+        </div>
       </div>
       <div className={`scroll-dots ${scrollDot}`}>
         <p>●</p>

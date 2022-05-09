@@ -1,4 +1,5 @@
 @import '../../styles/abstract/variables';
+@import '../../styles/abstract/mixins';
 .item-list {
   display: flex;
   flex-direction: row;
@@ -6,14 +7,21 @@
   width: 100vw;
   padding-bottom: 28px;
   overflow-x: scroll;
+  scroll-behavior: smooth;
   &::-webkit-scrollbar {
     display: none;
+  }
+  @include respond(tab-land) {
+    width: 70vw;
   }
 }
 .list-container {
   position: relative;
   &__title {
     margin: 20px 30px;
+    @include respond(tab-land) {
+      margin-top: 43px;
+    }
   }
 }
 .scroll-dots {
@@ -26,7 +34,10 @@
   font-size: 11px;
   width: 100vw;
   background-color: $color-white;
-
+  @include respond(tab-land) {
+    width: 70vw;
+    bottom: 0;
+  }
   &.first {
     & p:first-child {
       color: $color-secondary;
@@ -51,5 +62,39 @@
     margin: 0 5px;
     transition: all 0.5s;
     color: $color-grey-light-4;
+    @include respond(tab-land) {
+      color: transparent !important;
+    }
+  }
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  .arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    color: red;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 30px;
+    @include respond(tab-land) {
+      display: block;
+    }
+    &:hover img {
+      width: 21px;
+    }
+    &-left {
+      left: -30px;
+    }
+    &-right {
+      right: -30px;
+    }
+    img {
+      width: 17px;
+      transition: 0.2s;
+    }
   }
 }

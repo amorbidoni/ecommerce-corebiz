@@ -25,7 +25,7 @@ export const useApi = () => {
   const newsLetterSubscription = async (body) => {
     try {
       const _url = `/api/v1/newsletter`;
-      const response = await axios({
+      await axios({
         method: 'post',
         baseURL: baseUrl,
         url: _url,

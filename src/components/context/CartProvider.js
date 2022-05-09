@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from 'react';
+import React, { useContext, useState, createContext, useEffect } from 'react';
 
 // creo un context
 export const CartContext = createContext();
@@ -10,8 +10,17 @@ export const useCartContext = () => {
 
 // recibo los childrens como props
 export const CartProvider = ({ children }) => {
-  const [itemsInCart, setItemsInCart] = useState([]);
-  // agregar producos
+  const [itemsInCart, setItemsInCart] = useState(
+    JSON.parse(localStorage.getItem('shoppingCart')) || []
+  );
+  //
+  // locale storage
+  //
+  useEffect(() => {
+    localStorage.setItem('shoppingCart', JSON.stringify(itemsInCart));
+  }, [itemsInCart]);
+
+  // agregar producos\
 
   const addItem = (product) => {
     let isInCart = itemsInCart.find(
